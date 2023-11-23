@@ -20,7 +20,7 @@ public class MainApplication extends Application {
     private static final String TITLE = "Practicumopdracht DB2 - Startproject - versie 2022 ";
 
     //MySQL
-    private static final String MYSQL_HOST = "jdbc:mysql://localhost:3306/big_five_safari?autoReconnect=true&serverTimezone=Europe/Amsterdam&useSSL=False";
+    private static final String MYSQL_HOST = "jdbc:mysql://localhost:3306/big_five_safari?autoReconnect=true&serverTimezone=Europe/Amsterdam&useSSL=False"; //
     private static final String MYSQL_USERNAME = "root";  // vul hier je DB username in
     private static final String MYSQL_PASSWORD = "Shiw@2004"; // vul hier je DB wachtwoord in
 
