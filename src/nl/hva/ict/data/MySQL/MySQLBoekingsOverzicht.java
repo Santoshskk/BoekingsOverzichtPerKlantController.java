@@ -39,7 +39,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
     private void load() {
 
         // Vul hier je SQL code in
-        String sql = "";
+        String sql = "SELECT * FROM big_five_safari.boekingsoverzicht;";
 
         // Als je nog geen query hebt ingevuld breek dan af om een error te voorkomen.
         if (sql.equals(""))
@@ -55,11 +55,11 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
             // Loop net zolang als er records zijn
             while (rs.next()) {
                 int idReservering = 0;
-                Date aankomstDatum = rs.getDate("aankomstDatum");
-                Date vertrekDatum = rs.getDate("vertrekDatum");
+                Date aankomstDatum = rs.getDate("aankomstdatum");
+                Date vertrekDatum = rs.getDate("vertrekdatum");
                 boolean betaald = rs.getBoolean("betaald");
-                String accommodatieCode = rs.getString("accommodatieCode");
-                String reizerCode = rs.getString("reizigerCode");
+                String accommodatieCode = rs.getString("accommodtie_code");
+                String reizerCode = rs.getString("reiziger_code");
                 String voornaam = ""; // not in use
                 String achternaam = rs.getString("reiziger"); // combine voor en achternaam
                 String adres = ""; // not in use
@@ -98,7 +98,12 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
         List<BoekingsOverzicht> reserveringVoor = new ArrayList<>();
 
         // Voer hier je query in
-        String sql = "";
+        String sql = "SELECT r.*, a.naam, a.stad , a.land," +
+                " re.voornaam, re.achternaam, re.plaats  " +
+                "FROM big_five_safari.Resevering AS r " +
+                "JOIN big_five_safari.Accommodatie AS a ON r.accommodtie_code = a.accommodtie_code " +
+                "JOIN big_five_safari.Reiziger AS re ON r.reiziger_code = re.reiziger_code " +
+                "WHERE re.reiziger_code = ?";
 
 
         try {
@@ -115,10 +120,10 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
             // Loop net zolang als er records zijn
             while (rs.next()) {
                 int idReservering = 0;
-                Date aankomstDatum = rs.getDate("aankomstDatum");
-                Date vertrekDatum = rs.getDate("vertrekDatum");
+                Date aankomstDatum = rs.getDate("aankomstdatum");
+                Date vertrekDatum = rs.getDate("vertrekdatum");
                 boolean betaald = rs.getBoolean("betaald");
-                String accommodatieCode = rs.getString("accommodatieCode");
+                String accommodatieCode = rs.getString("accommodtie_code");
 
                 String reizigerVoornaam = rs.getString("voornaam");
                 String reizigerAchternaam = rs.getString("achternaam");
@@ -161,7 +166,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
     private String getReizigerscode(String pCode, LocalDate pDatum) {
 
        // Voer hier je eigen query in
-        String sql = "";
+        String sql = "SELECT GeboektOp(?, ?) AS reiziger_code";
 
         // default waarde
         String reizigerCode = "";
@@ -182,7 +187,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
 
             // Loop net zolang als er records zijn
             while (rs.next()) {
-                reizigerCode = rs.getString("reizigerCode");
+                reizigerCode = rs.getString("reiziger_code");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -214,7 +219,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
         if (reizigerscode != null) {
 
             // Haal alle reserveringen op
-            String sql = "";
+            String sql = "SELECT * FROM big_five_safari.reiziger WHERE reiziger_code= ?;";
 
             // Als je nog geen query hebt ingevuld breek dan af om een error te voorkomen.
             if (sql.equals(""))

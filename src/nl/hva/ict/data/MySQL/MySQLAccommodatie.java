@@ -33,7 +33,7 @@ public class MySQLAccommodatie extends MySQL<Accommodatie> {
     private void load() {
 
         // Vul hier je SQL code in
-        String sql = "";
+        String sql = "SELECT * FROM big_five_safari.accommodatie;";
 
         // Als je nog geen query hebt ingevuld breek dan af om een error te voorkomen.
         if (sql.equals(""))
@@ -50,12 +50,12 @@ public class MySQLAccommodatie extends MySQL<Accommodatie> {
             while (rs.next()) {
 
                 // Haal alle velden op. Heb je een database ontwerp met andere velden? Pas dan hier de veldnamen aan
-                String accommodatieCode = rs.getString("accommodatie_code");
+                String accommodatieCode = rs.getString("accommodtie_code");
                 String naam = rs.getString("naam");
                 String stad = rs.getString("stad");
                 String land = rs.getString("land");
                 String kamer = rs.getString("kamer");
-                int personen = rs.getInt("personen");
+                int personen = rs.getInt("aantal_personen");
                 // Maak een object en voeg die toe aan de arraylist
                 accommodaties.add(new Accommodatie(accommodatieCode, naam, stad, land, kamer, personen));
             }
