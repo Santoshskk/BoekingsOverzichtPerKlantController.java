@@ -34,7 +34,8 @@ public class MySQLHotel extends MySQL<Hotel> {
     private void load() {
 
         // Voer hier je SQL code in
-        String sql = "";
+        String sql = "SELECT * FROM big_five_safari.accommodatie a " +
+                "JOIN hotel h ON a.accommodatie_code= h.accommodatie_code";
 
         // Als je nog geen query hebt ingevuld breek dan af om een error te voorkomen.
         if (sql.equals(""))
@@ -55,8 +56,8 @@ public class MySQLHotel extends MySQL<Hotel> {
                 String stad = rs.getString("stad");
                 String land = rs.getString("land");
                 String kamer = rs.getString("kamer");
-                int personen = rs.getInt("personen");
-                double prijsPerNacht = rs.getDouble("prijsPerNacht");
+                int personen = rs.getInt("aantal_personen");
+                double prijsPerNacht = rs.getDouble("prijs_per_nacht");
                 boolean ontbijt = rs.getBoolean("ontbijt");
                 // Maak model aan en voeg toe aan arraylist
                 hotels.add(new Hotel(accommodatieCode, naam, stad, land, kamer, personen, prijsPerNacht, ontbijt));
@@ -110,7 +111,7 @@ public class MySQLHotel extends MySQL<Hotel> {
     public void remove(Hotel object) {
 
         // Voer hier je SQL code in
-        String sql = "";
+        String sql = "CALL verwijderAccommodatie( ? )";
 
         // Als er geen object is wordt de methode afgebroken
         if (object == null)

@@ -32,7 +32,7 @@ public class MySQLLodge extends MySQL<Lodge> {
      */
     private void load() {
 
-        // Voer hier je SQL code in
+        // Voer hier je SQL code in big_five_safari.
         String sql = "";
 
         // Als je nog geen query hebt ingevuld breek dan af om een error te voorkomen.

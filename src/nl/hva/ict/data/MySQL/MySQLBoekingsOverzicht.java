@@ -58,7 +58,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
                 Date aankomstDatum = rs.getDate("aankomstdatum");
                 Date vertrekDatum = rs.getDate("vertrekdatum");
                 boolean betaald = rs.getBoolean("betaald");
-                String accommodatieCode = rs.getString("accommodtie_code");
+                String accommodatieCode = rs.getString("accommodatie_code");
                 String reizerCode = rs.getString("reiziger_code");
                 String voornaam = ""; // not in use
                 String achternaam = rs.getString("reiziger"); // combine voor en achternaam
@@ -101,7 +101,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
         String sql = "SELECT r.*, a.naam, a.stad , a.land," +
                 " re.voornaam, re.achternaam, re.plaats  " +
                 "FROM big_five_safari.Resevering AS r " +
-                "JOIN big_five_safari.Accommodatie AS a ON r.accommodtie_code = a.accommodtie_code " +
+                "JOIN big_five_safari.Accommodatie AS a ON r.accommodatie_code = a.accommodatie_code " +
                 "JOIN big_five_safari.Reiziger AS re ON r.reiziger_code = re.reiziger_code " +
                 "WHERE re.reiziger_code = ?";
 
@@ -123,7 +123,7 @@ public class MySQLBoekingsOverzicht extends MySQL<BoekingsOverzicht> {
                 Date aankomstDatum = rs.getDate("aankomstdatum");
                 Date vertrekDatum = rs.getDate("vertrekdatum");
                 boolean betaald = rs.getBoolean("betaald");
-                String accommodatieCode = rs.getString("accommodtie_code");
+                String accommodatieCode = rs.getString("accommodatie_code");
 
                 String reizigerVoornaam = rs.getString("voornaam");
                 String reizigerAchternaam = rs.getString("achternaam");

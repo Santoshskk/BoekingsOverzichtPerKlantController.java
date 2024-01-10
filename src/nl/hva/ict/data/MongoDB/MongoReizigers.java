@@ -78,7 +78,7 @@ public class MongoReizigers extends MongoDB {
             return;
 
         // Selecteer de juiste collecton in de NoSQL server
-        this.selectedCollection("reizigers");
+        this.selectedCollection("Reizigers");
 
         // Haal alles op uit deze collection en loop er 1 voor 1 doorheen
         MongoCursor<Document> cursor = collection.find().iterator();

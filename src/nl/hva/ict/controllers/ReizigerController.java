@@ -33,7 +33,7 @@ public class ReizigerController extends Controller {
         ObservableList<Reiziger> reizigers = FXCollections.observableArrayList(MainApplication.getMySQLReizigers().getAll());
 
         // voor NOSQL
-        // reizigers = FXCollections.observableArrayList(MainApplication.getMongoDBReizigers().getAll());
+         reizigers = FXCollections.observableArrayList(MainApplication.getMongoDBReizigers().getAll());
 
         reizigersView.getReizigersViewListView().setItems(reizigers);
         reizigersView.getComboReistSamenMet().getSelectionModel().select(null);

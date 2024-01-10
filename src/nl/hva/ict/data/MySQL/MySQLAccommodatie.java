@@ -50,7 +50,7 @@ public class MySQLAccommodatie extends MySQL<Accommodatie> {
             while (rs.next()) {
 
                 // Haal alle velden op. Heb je een database ontwerp met andere velden? Pas dan hier de veldnamen aan
-                String accommodatieCode = rs.getString("accommodtie_code");
+                String accommodatieCode = rs.getString("accommodatie_code");
                 String naam = rs.getString("naam");
                 String stad = rs.getString("stad");
                 String land = rs.getString("land");
